@@ -105,6 +105,7 @@ void dibujarPuntos(int num,int posX,int posY){
 }
 
 int tirarDado(int posX,int posY){
+    rlutil::hidecursor();
     int numeroAleatorio;
     for(int i=0;i<10;i++){
     numeroAleatorio=rand()%6+1;

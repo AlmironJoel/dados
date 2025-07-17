@@ -92,3 +92,48 @@
 	<ctime>
 	<stdlib.h>
 
+1752586312 source:c:\users\joel\onedrive\escritorio\proyecto dados\dados git\dados\funciondados.cpp
+	<iostream>
+	"funcionDados.h"
+	"rlutil.h"
+	"funcionJugador.h"
+	<cstdlib>
+	<ctime>
+
+1752449772 c:\users\joel\onedrive\escritorio\proyecto dados\dados git\dados\funciondados.h
+	"funcionDados.h"
+	"funcionJugador.h"
+	"rlutil.h"
+	<cstdlib>
+	<ctime>
+
+1752449772 c:\users\joel\onedrive\escritorio\proyecto dados\dados git\dados\funcionjugador.h
+	"funcionDados.h"
+	"funcionJugador.h"
+	"rlutil.h"
+	<cstdlib>
+	<ctime>
+
+1752449773 c:\users\joel\onedrive\escritorio\proyecto dados\dados git\dados\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1752590816 source:c:\users\joel\onedrive\escritorio\proyecto dados\dados git\dados\main.cpp
+	<iostream>
+	"funcionDados.h"
+	"funcionJugador.h"
+	"rlutil.h"
+	<cstdlib>
+	<ctime>
+	<stdlib.h>
+
