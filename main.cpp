@@ -43,11 +43,10 @@ int main()
     ban=primerTurno(Player);
     int VcontenedorIndices[12]={0};
 //Inicio de juego
-    while(ronda<=3){
+    while(ronda<=2){
 
-    ronda++;
     rlutil::locate(50,1);
-    cout<<"Ronda "<<ronda<<endl;
+    cout<<"Ronda "<<ronda+1<<endl;
     if(ban== 0){
             rlutil::locate(1,14);
             cout<<"Turno del jugador: "<<Player[ban].nombre<<endl;
@@ -83,7 +82,6 @@ int main()
 
         while(!salir){
         //mostrar todos los dados
-        int limite=0;
         for(int n=0;n<12;n++){
                 rlutil::locate(4, 18 + n);
             //resaltar opcion
@@ -159,7 +157,7 @@ int main()
         // El oponente envia 1 dado (si tiene menos de 1)
             if(Player[(ban + 1) % 2].dadosStock > 1) {
                 transferirDados(Player, (ban + 1) % 2, ban, 1);
-                cout << "Penalización: " << Player[(ban + 1) % 2].nombre << " envia 1 dado";
+                cout << "Penalizacion: " << Player[(ban + 1) % 2].nombre << " envia 1 dado";
                 }
                 salir = true;
             }
@@ -182,20 +180,25 @@ int main()
             cout<<"numeros acumulados: "<<Player[ban].puntosPoliedro[i]<<endl;
             }
         }
-            cout<<"suma total= "<<sumaDeDados;
+            cout<<"suma total= "<<Player[ban].puntos;
 
         system("pause");
 
 
         if(ban==0){
             ban=1;
+            ronda++;
         }else if(ban==1){
             ban=0;
         }
     }//sale While primero
     cout<<"Salio del primer while con el contador en :" << Player[ban].puntos<<endl;
 
-    cout<<"Ganador! jugador: "<<Player[ban].nombre<<endl;
+    if(Player[0].puntos>Player[1].puntos){
+    cout<<"Ganador! jugador: "<<Player[0].nombre<<endl;
+    }else{
+    cout<<"Ganador! jugador: "<<Player[1].nombre<<endl;
+    }
     rlutil::anykey();
 
 

@@ -128,7 +128,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1752590816 source:c:\users\joel\onedrive\escritorio\proyecto dados\dados git\dados\main.cpp
+1752845786 source:c:\users\joel\onedrive\escritorio\proyecto dados\dados git\dados\main.cpp
 	<iostream>
 	"funcionDados.h"
 	"funcionJugador.h"
