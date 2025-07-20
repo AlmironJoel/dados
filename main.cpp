@@ -5,6 +5,7 @@
 #include <cstdlib>  // Necesario para rand() y srand()
 #include <ctime>    // Necesario para time()
 #include <stdlib.h> // Necesario para system()
+#include <cmath>
 
 using namespace std;
 
@@ -36,17 +37,18 @@ int main()
     srand(time(0));
     jugador Player[2];
     int ban;
-    int ronda=0;
+    int ronda=1,turno=0;
     int totalPoliedro;
     pedirNombres(Player);
     rlutil::hidecursor();
     ban=primerTurno(Player);
     int VcontenedorIndices[12]={0};
 //Inicio de juego
-    while(ronda<=2){
-
+    while(ronda<=3){
+    turno++;
     rlutil::locate(50,1);
-    cout<<"Ronda "<<ronda+1<<endl;
+    //ronda=ceil(ronda/1.5);
+    cout<<"Ronda "<<ronda<<" /3"<<endl;
     if(ban== 0){
             rlutil::locate(1,14);
             cout<<"Turno del jugador: "<<Player[ban].nombre<<endl;
@@ -75,15 +77,25 @@ int main()
     bool salir=false;
 
     rlutil::hidecursor();
-    rlutil::locate(1,16);
+    rlutil::locate(18,14);
 
-    cout<<"dado objetivo jugador "<<Player[ban].nombre<<" : "<<totalPoliedro<<" Puntos"<<endl;
     cout << "Usa las Flechas para seleccionar dados y ENTER para confirmar. (ESC para terminar):" << endl;
+    if(ban==1){
+                    rlutil::locate(75, 16);
+                }else{
+                    rlutil::locate(2, 16);
+                }
+    cout<<"Dado objetivo del jugador "<<Player[ban].nombre<<" : "<<totalPoliedro<<" Puntos"<<endl;
 
         while(!salir){
         //mostrar todos los dados
         for(int n=0;n<12;n++){
-                rlutil::locate(4, 18 + n);
+            //ubicacion
+                if(ban==1){
+                    rlutil::locate(100, 18 + n);
+                }else{
+                    rlutil::locate(4, 18 + n);
+                }
             //resaltar opcion
         if(Player[ban].vNumTirada[n]>0&&Player[ban].vNumTirada[n]<7){
                 if(n==y){
@@ -97,13 +109,22 @@ int main()
               rlutil::setBackgroundColor(rlutil::BLACK); // Restablecer color
 
     // Mostrar flecha de seleccion
+        if(ban==1){
+            rlutil::locate(97, 18 + y);
+        }else{
             rlutil::locate(1, 18 + y);
+            }
             cout << (char)175;
     int key = rlutil::getkey();
 
     switch (key) {
         case 14: // UP
+            if(ban==1){
+            rlutil::locate(97, 18 + y);
+                }else{
             rlutil::locate(1, 18 + y);
+            }
+
             cout << " "<<endl;
                 y--;
             if (y< 0){
@@ -111,7 +132,11 @@ int main()
             }
             break;
         case 15: // DOWN
+            if(ban==1){
+            rlutil::locate(97, 18 + y);
+                }else{
             rlutil::locate(1, 18 + y);
+            }
             cout << " "<<endl;
                 y++;
                 if (y > 11){
@@ -124,7 +149,7 @@ int main()
                 VcontenedorIndices[y]=y;//guarda el indice del numero seleccionado
                 Player[ban].puntosPoliedro[y] = Player[ban].vNumTirada[y];
                 sumaDeDados += Player[ban].vNumTirada[y];
-                rlutil::locate(10, 16 + 5);
+                rlutil::locate(50, 16 + 5);
                 cout << "Suma parcial: " << sumaDeDados << "   ";
                 Player[ban].vNumTirada[y] =0; // Marcar como ya seleccionado
             }
@@ -157,7 +182,10 @@ int main()
         // El oponente envia 1 dado (si tiene menos de 1)
             if(Player[(ban + 1) % 2].dadosStock > 1) {
                 transferirDados(Player, (ban + 1) % 2, ban, 1);
-                cout << "Penalizacion: " << Player[(ban + 1) % 2].nombre << " envia 1 dado";
+                rlutil::locate(35,25);
+                rlutil::setBackgroundColor(rlutil::RED);
+                cout << "Penalizacion: " << Player[(ban + 1) % 2].nombre << " envia 1 dado"<<endl;
+                rlutil::setBackgroundColor(rlutil::BLACK);
                 }
                 salir = true;
             }
@@ -177,22 +205,25 @@ int main()
 
         for(int i=0;i<12;i++){
             if(Player[ban].puntosPoliedro[i]!=0){
-            cout<<"numeros acumulados: "<<Player[ban].puntosPoliedro[i]<<endl;
+            cout<<"numeros SELECCIONADOS: "<<Player[ban].puntosPoliedro[i]<<endl;
             }
         }
-            cout<<"suma total= "<<Player[ban].puntos;
+            rlutil::locate(35,26);
+            cout<<"Total puntos de la Ronda "<<ronda<<" : "<<sumaDeDados<<"."<<endl;
+            rlutil::locate(35,27);
+            cout<<"suma total= "<<Player[ban].puntos<<endl;
 
-        system("pause");
-
-
-        if(ban==0){
-            ban=1;
+        rlutil::anykey();
+        if(turno==2){
             ronda++;
-        }else if(ban==1){
-            ban=0;
+            turno=0;
         }
+
+        ban=(ban+1)%2;
+
     }//sale While primero
-    cout<<"Salio del primer while con el contador en :" << Player[ban].puntos<<endl;
+    rlutil::locate(50,40);
+    cout<<"FIN DE LA PARTIDA!!! " << Player[ban].puntos<<endl;
 
     if(Player[0].puntos>Player[1].puntos){
     cout<<"Ganador! jugador: "<<Player[0].nombre<<endl;
@@ -206,19 +237,11 @@ int main()
 }
 //Funciones
     void pedirNombres (jugador Player[2]){
-        //pone en Cero el Vector
-        for(int i=0;i<2;i++){
-            for(int n=0;n<12;n++){
-                Player[i].vNumTirada[n]=-10;
-                }
-        }
-
-        for(int i=0;i<2;i++){
+            for(int i=0;i<2;i++){
                 rlutil::hidecursor();
                 rlutil::locate(40,13+i);
             cout<<"introduce el nombre del Jugador: "<<i+1<<" ";
             cin.getline(Player[i].nombre,50);
-            //cin.ignore();
             }
         rlutil::cls();
     }
@@ -251,9 +274,9 @@ int main()
         //ingresa valores
         for(int j=0;j<2;j++){
             if(ban==1){
-                Player[ban].vDadosObjetivos[j]=tirarPoliedro(80+j*10,5);
+                Player[ban].vDadosObjetivos[j]=tirarPoliedro(80+j*10,6);
             }else{
-                Player[ban].vDadosObjetivos[j]=tirarPoliedro((j+2)*10,5);
+                Player[ban].vDadosObjetivos[j]=tirarPoliedro((j+2)*10,6);
             }
           total=total+Player[ban].vDadosObjetivos[j];
         }
@@ -272,7 +295,7 @@ int main()
                 } else{
                     rlutil::locate(80,12);
                     }
-           cout <<"Dando un total de : "<<total<<" puntos a alcanzar"<<endl;
+           cout <<"Dando un total de : "<<total<<" PUNTOS a alcanzar"<<endl;
         system("pause");
         rlutil::cls();
 
@@ -293,9 +316,9 @@ int main()
             Player[origenIndex].dadosStock-=cantidad;
             Player[destinoIndex].dadosStock+=cantidad;
 
-            rlutil::locate(20, 30);
+            rlutil::locate(25, 30);
        cout << "TRANSFERENCIA: " << cantidad << " dado(s) de "
-       << Player[origenIndex].nombre << " a " << Player[destinoIndex].nombre;
+       << Player[origenIndex].nombre << " a " << Player[destinoIndex].nombre<<endl;
         }else {
         cout << "No se transfirio nada mi rey..." <<endl;
         }

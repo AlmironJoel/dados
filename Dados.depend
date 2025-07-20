@@ -137,3 +137,49 @@
 	<ctime>
 	<stdlib.h>
 
+1752761368 source:c:\users\joel\desktop\utn recursos integrador\dados\funciondados.cpp
+	<iostream>
+	"funcionDados.h"
+	"rlutil.h"
+	"funcionJugador.h"
+	<cstdlib>
+	<ctime>
+
+1750511488 c:\users\joel\desktop\utn recursos integrador\dados\funciondados.h
+	"funcionDados.h"
+	"funcionJugador.h"
+	"rlutil.h"
+	<cstdlib>
+	<ctime>
+
+1750511144 c:\users\joel\desktop\utn recursos integrador\dados\funcionjugador.h
+	"funcionDados.h"
+	"funcionJugador.h"
+	"rlutil.h"
+	<cstdlib>
+	<ctime>
+
+1750511283 c:\users\joel\desktop\utn recursos integrador\dados\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1753027473 source:c:\users\joel\desktop\utn recursos integrador\dados\main.cpp
+	<iostream>
+	"funcionDados.h"
+	"funcionJugador.h"
+	"rlutil.h"
+	<cstdlib>
+	<ctime>
+	<stdlib.h>
+	<cmath>
+
