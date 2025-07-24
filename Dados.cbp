@@ -34,13 +34,14 @@
 		</Compiler>
 		<Unit filename="funcionDados.cpp" />
 		<Unit filename="funcionDados.h" />
-		<Unit filename="funcionJugador.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="funcionJugador.h">
+		<Unit filename="funcionPlayer.cpp" />
+		<Unit filename="funcionPlayer.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.cpp" />
+		<Unit filename="player.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="rlutil.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

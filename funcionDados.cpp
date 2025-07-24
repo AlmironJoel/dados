@@ -1,7 +1,6 @@
 #include <iostream>
 #include "funcionDados.h"
 #include "rlutil.h"
-#include "funcionJugador.h"
 #include <cstdlib>  // Necesario para rand() y srand()
 #include <ctime>    // Necesario para time()
 

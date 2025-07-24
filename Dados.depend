@@ -137,22 +137,20 @@
 	<ctime>
 	<stdlib.h>
 
-1752761368 source:c:\users\joel\desktop\utn recursos integrador\dados\funciondados.cpp
+1753397135 source:c:\users\joel\desktop\utn recursos integrador\dados\funciondados.cpp
 	<iostream>
 	"funcionDados.h"
 	"rlutil.h"
-	"funcionJugador.h"
 	<cstdlib>
 	<ctime>
 
-1750511488 c:\users\joel\desktop\utn recursos integrador\dados\funciondados.h
+1753398263 c:\users\joel\desktop\utn recursos integrador\dados\funciondados.h
 	"funcionDados.h"
-	"funcionJugador.h"
 	"rlutil.h"
 	<cstdlib>
 	<ctime>
 
-1750511144 c:\users\joel\desktop\utn recursos integrador\dados\funcionjugador.h
+1753225938 c:\users\joel\desktop\utn recursos integrador\dados\funcionjugador.h
 	"funcionDados.h"
 	"funcionJugador.h"
 	"rlutil.h"
@@ -173,13 +171,35 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1753027473 source:c:\users\joel\desktop\utn recursos integrador\dados\main.cpp
+1753398223 source:c:\users\joel\desktop\utn recursos integrador\dados\main.cpp
+	<iostream>
+	"funcionDados.h"
+	"funcionPlayer.h"
+	"player.h"
+	"rlutil.h"
+	<cstdlib>
+	<ctime>
+	<stdlib.h>
+
+1753225832 c:\users\joel\desktop\utn recursos integrador\dados\funcionjugador.cpp
 	<iostream>
 	"funcionDados.h"
 	"funcionJugador.h"
 	"rlutil.h"
 	<cstdlib>
 	<ctime>
-	<stdlib.h>
-	<cmath>
+
+1753398002 c:\users\joel\desktop\utn recursos integrador\dados\player.h
+
+1753398172 c:\users\joel\desktop\utn recursos integrador\dados\funcionplayer.h
+	"funcionDados.h"
+	"player.h"
+	"rlutil.h"
+	<cstdlib>
+	<ctime>
+
+1753398234 source:c:\users\joel\desktop\utn recursos integrador\dados\funcionplayer.cpp
+	<iostream>
+	"funcionPlayer.h"
+	"player.h"
 
