@@ -171,7 +171,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1753398223 source:c:\users\joel\desktop\utn recursos integrador\dados\main.cpp
+1753565995 source:c:\users\joel\desktop\utn recursos integrador\dados\main.cpp
 	<iostream>
 	"funcionDados.h"
 	"funcionPlayer.h"
@@ -191,14 +191,14 @@
 
 1753398002 c:\users\joel\desktop\utn recursos integrador\dados\player.h
 
-1753398172 c:\users\joel\desktop\utn recursos integrador\dados\funcionplayer.h
+1753398555 c:\users\joel\desktop\utn recursos integrador\dados\funcionplayer.h
 	"funcionDados.h"
 	"player.h"
 	"rlutil.h"
 	<cstdlib>
 	<ctime>
 
-1753398234 source:c:\users\joel\desktop\utn recursos integrador\dados\funcionplayer.cpp
+1753398556 source:c:\users\joel\desktop\utn recursos integrador\dados\funcionplayer.cpp
 	<iostream>
 	"funcionPlayer.h"
 	"player.h"

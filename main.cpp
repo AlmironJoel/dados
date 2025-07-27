@@ -5,14 +5,97 @@
 #include "player.h"
 #include "rlutil.h"
 //metodos
-#include <cstdlib>  // Necesario para rand() y srand()
-#include <ctime>    // Necesario para time()
-#include <stdlib.h> // Necesario para system()
+#include <cstdlib>  //para rand() y srand()
+#include <ctime>    //para time()
+#include <stdlib.h> //para system()
 
 using namespace std;
+void showItem(const char* text,int posX,int posY,bool seleted);
+
+void showItem(const char* text,int posX,int posY,bool seleted){
+    if(seleted){
+        rlutil::setBackgroundColor(rlutil::BLUE);
+    }else{
+        rlutil::setBackgroundColor(rlutil::BLACK);
+    }
+    rlutil::locate(posX,posY);
+    cout << text <<endl;
+}
 
 int main()
 {
+//Menu Principal
+int opcion = 1 ;
+int yMenu=0;
+do{
+showItem("INICIAR JUEGO",50,18,yMenu==0);
+showItem(" TOP PUNTAJE ",50,19,yMenu==1);
+showItem("  CREDITOS   ",50,20,yMenu==2);
+showItem("    SALIR    ",50,21,yMenu==3);
+rlutil::setBackgroundColor(rlutil::BLACK);
+rlutil::locate(48,18+yMenu);
+cout << (char)175<<endl;
+
+int keyMenu=rlutil::getkey();
+
+    switch(keyMenu){
+    case 14://UP
+            rlutil::locate(48,18+yMenu);
+            cout <<"  "<<endl;
+            if(yMenu<=0){
+                yMenu=0;
+            }else{
+                yMenu--;
+            }
+
+        break;
+    case 15://Down
+            rlutil::locate(48,18+yMenu);
+            cout <<"  "<<endl;
+            if(yMenu>=3){
+                yMenu=3;
+            }else{
+                yMenu++;
+            }
+        break;
+    case 1 ://Enter
+
+            switch(yMenu){
+            case 0:
+                cout<<"Entra al Juego"<< endl;
+
+
+                break;
+            case 1:
+                cout<<"Entra a Estadisticas"<< endl;
+            break;
+            case 2:
+                cout<<"Grupo 5"<< endl;
+                cout<<"Integrantes y roles del Trabajo:"<< endl;
+                cout<<"Joel Brian Almiron"<< endl;
+                cout<<"Legajo : 32378"<<endl;
+
+                cout<<"Joel Team Lider"<< endl;
+                cout<<"Joel Diseno UX/UI "<< endl;
+                cout<<"Joel control de calidad (el que rompe y arregla el codigo)"<< endl;
+                cout<<"Joel Debug"<< endl;
+
+            break;
+            case 3:
+                cout<<"Salida"<< endl;
+                opcion=0;
+                break;
+            }//Switch Enter.
+
+        break;
+    }
+
+}while(opcion!=0);//DO WHILE
+//enter 1
+//up 14
+//down 15
+
+//***********************
     srand(time(0));
     jugador Player[2];
     int ban;
@@ -23,9 +106,6 @@ int main()
     ban=primerTurno(Player);
     int VcontenedorIndices[12]={0};
 
-
-
-    //***********************
 //Inicio de juego
     while(ronda<=3){
     turno++;
