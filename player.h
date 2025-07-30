@@ -9,3 +9,8 @@ struct jugador {
     int dadoInicial;
     int dadosStock = 6;
 };
+
+struct point{
+    char name[50]="vacio";
+    int score=0;
+};
