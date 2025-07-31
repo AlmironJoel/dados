@@ -17,21 +17,26 @@ void pedirNombres (jugador Player[2]){
 int primerTurno(jugador Player[2]){
     //Dado de inicio.
         int ban;
-        rlutil::locate(40,3);
+        rlutil::locate(50,3);
         cout<<"Dados de Inicio !!!"<<endl;
         for(int i=0;i<2;i++){
         rlutil::hidecursor();
-            Player[i].dadoInicial=tirarDado(40+(i*10),5);
+            Player[i].dadoInicial=tirarDado((40+(i*20))+(i*10),5);
+            rlutil::locate((36+(i*20))+(i*10),8);
+            cout<<"Jugador: "<<Player[i].nombre;
         }
-        if(Player[0].dadoInicial>Player[1].dadoInicial){
+
+        if(Player[0].dadoInicial==Player[1].dadoInicial){
             ban=0;
             rlutil::locate(40,10);
             cout<<"Comienza el jugardor: "<<Player[ban].nombre<<" !!!"<<endl;
-        }else{
+        }else if(Player[1].dadoInicial>Player[0].dadoInicial){
             ban=1;
             rlutil::locate(40,10);
             cout<<"Comienza el jugardor: "<<Player[ban].nombre<<" !!!"<<endl;
-              }
+        }else{
+            primerTurno(Player);
+        }
               rlutil::anykey();
               rlutil::cls();
               return ban;
@@ -85,7 +90,7 @@ void transferirDados(jugador Player[2],int origenIndex,int destinoIndex,int cant
             Player[origenIndex].dadosStock-=cantidad;
             Player[destinoIndex].dadosStock+=cantidad;
 
-            rlutil::locate(25, 30);
+            rlutil::locate(30, 30);
        cout << "TRANSFERENCIA: " << cantidad << " dado(s) de "
        << Player[origenIndex].nombre << " a " << Player[destinoIndex].nombre<<endl;
         }else {
@@ -104,7 +109,7 @@ void showItem(const char* text,int posX,int posY,bool seleted){
 }
 
 void game(point top[5]){
-                    //***********************
+//***********************
     srand(time(0));
     jugador Player[2];
     int ban;
@@ -246,7 +251,7 @@ void game(point top[5]){
                 // Verificar victoria automatica
                 if(Player[ban].dadosStock == 0) {
                     Player[ban].puntos += 10000;
-                    cout << "VICTORIA AUTOMATICA! " << Player[ban].nombre << " gana!";
+                    cout << "VICTORIA AUTOMATICA! " << Player[ban].nombre << " gana!"<<endl;
                     ronda = 4; // Forzar fin del juego
                         }
                     salir = true; // Salir del bucle de seleccion de dados
@@ -288,6 +293,7 @@ void game(point top[5]){
             cout<<"suma total= "<<Player[ban].puntos<<endl;
 
         rlutil::anykey();
+        rlutil::cls();
         if(turno==2){
             ronda++;
             turno=0;
@@ -338,3 +344,28 @@ void game(point top[5]){
     //*****************
 }
 
+void topRanking(point top[5]){
+    rlutil::hidecursor();
+      for(int x=0;x<10;x++){
+        rlutil::locate(54,14);
+            if(x%2==0){
+              rlutil::setBackgroundColor(rlutil::LIGHTBLUE);
+              rlutil::msleep(50);
+            }else{
+              rlutil::setBackgroundColor(rlutil::MAGENTA);
+              rlutil::msleep(50);
+            }
+      cout<<"Jugadores TOP 5"<< endl;
+      }
+      rlutil::setBackgroundColor(rlutil::BLACK);
+      for(int i=0; i<5;i++){
+        rlutil::locate(50,15+i);
+        cout<<i+1<<"* Puesto "<<" : "<<top[i].name<<" = "<<top[i].score<<" puntos."<<endl;
+      }
+
+      rlutil::locate(45,22);
+      cout<<"Preciona una tecla para volver al menu Principal";
+
+      rlutil::anykey();
+      rlutil::cls();
+};

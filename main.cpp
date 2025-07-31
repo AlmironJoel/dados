@@ -53,25 +53,29 @@ int keyMenu=rlutil::getkey();
             switch(yMenu){
 
             case 0:// Iniciar juego
-                {cout<<"Entra al Juego"<< endl;
+                {
+                rlutil::cls();
                 game(top);
                 break;
                 }
             case 1:// Estadísticas
-                cout<<"Entra a Estadisticas"<< endl;
-                for(int i=0; i<5;i++){
-                cout<<"Pos "<<i+1<<top[i].name<<" : "<<top[i].score<<endl;
-                }
+                rlutil::cls();
+                topRanking(top);
             break;
             case 2: // Créditos
-                cout<<"Grupo 5"<< endl;
-                cout<<"Joel Brian Almiron"<< endl;
-                cout<<"Legajo : 32378"<<endl;
-
+                rlutil::cls();
+                showItem("Grupo 5",55,10,true);
+                showItem("Joel Brian Almiron",50,11,false);
+                showItem("Legajo : 32378",50,12,false);
+                rlutil::locate(40,22);
+                cout<<"Preciona una tecla para volver al menu Principal";
+                rlutil::anykey();
+                rlutil::cls();
             break;
 
             case 3:// Salir
-                cout<<"Salida"<< endl;
+                rlutil::cls();
+                cout<<"Gracias por jugar! :3"<< endl;
                 opcion=0;
                 break;
             }//Switch Enter.
